@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+        
+        let admin = {
+            "full name": "kiran raj",
+            name:"kiran raj",
+            '1admin': true,
+            admin:true,
+            greet: function(){
+                console.log(`Hello ${this. name}`);
+            }
+        }
+
+        // Dot notation
+        //console.log(admin."full name"); //this will create error
+        console.log(admin.name);        //kirn raj
+        console.log(admin.admin);       //true
+
+        // Bracket notation
+        console.log(admin["full name"]); //kiran raj
+        console.log(admin['name']);      //kiran raj
+        console.log(admin['1admin']);     //true
+
+
+    </script>
+</body>
+</html>

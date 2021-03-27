@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+        let admin1 = {
+            fname: "kiran",
+            lname: "raj",
+            admin: true,
+        }
+
+        let admin2 = {
+            fname: "Rajeesh",
+            lname: "",
+            admin: true
+        }
+
+        let admin3 = {
+            fname: "Vishnu",
+            lname:"R",
+            admin: true,
+        }
+
+        function GreetAdmin(){
+            console.log(`Hello ${this. fname} ${this.lname}`);
+        }
+
+        admin1.greet = GreetAdmin;
+        admin2.greet = GreetAdmin;
+        admin3.greet = GreetAdmin;
+
+        admin1.greet();             // Hello kiran raj
+        admin2.greet();             // Hello Rajeesh
+        admin3.greet();             // Hello Vishnu R
+
+        let me = {
+            name: {
+                fname: "kiran",
+                lname: "raj",
+                id:123,
+            },
+            address:{
+                country: "India",
+                state: "KL",
+                id:124,
+                printit(){
+                    console.log(this);
+                }
+            },
+            id:120,
+        }
+
+        function getId(){
+            console.log(this.id);
+        }
+
+        function sayIt(){
+            console.log(this == me, this);
+        }
+
+        me.id1 = getId;
+        me.name.id2 = getId;
+        me.address.id3 = getId;
+
+        me.id1();               //120
+        me.name.id2();          //123
+        me.address.id3();       //124
+
+        me.say = sayIt;             
+        me.address.say1 = sayIt;     
+        me.name.say2 = sayIt;
+        
+        me.say();           //true {name: {…}, address: {…}, id: 120, id1: ƒ, say: ƒ}
+        me.address.say1();  //false {country: "India", state: "KL", id: 124, printit: ƒ, id3: ƒ, …}
+        me.name.say2();     //false {fname: "kiran", lname: "raj", id: 123, id2: ƒ, say2: ƒ}
+     
+
+    </script>
+</body>
+</html>

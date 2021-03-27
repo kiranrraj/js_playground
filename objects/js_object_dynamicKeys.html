@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+
+        let avengers = "captain";
+        let me = "kiran";
+
+        let admin = {
+            fname: "kiran",
+            lname: "raj",
+            email: "kiranr@gmail.com",
+            "7":777,
+            [avengers]:"lets go",  //tells that the property key should be taken from avengers
+            [me + "raj"] : "kiran raj",
+            admin: true,
+            greet: function(){
+                console.log(`Hello ${this. name}`);
+            }
+        }
+
+        let key = "fname";
+        console.log(admin.key);         //undefined
+        console.log(admin[key]);        //kiran
+        console.log(admin['key']);      //undefined
+
+        let x = 3, y =4;
+        console.log(admin[x+y]);        //777
+
+
+        //[avengers]:"lets go" --> captain: "lets go"
+        console.log(admin[avengers]);   //lets go
+        console.log(admin.avengers);    //undefined **
+
+        console.log(admin["captain"]);  //lets go
+        console.log(admin.captain);     //lets go **
+
+
+        let ironman = "captain";
+        console.log(admin[ironman]);    //lets go
+        console.log(admin.ironman);     //undefined **
+
+        console.log(admin["kiranraj"]); //kiran raj
+        console.log(admin["kiran" + "raj"]); //kiran raj
+        console.log(admin[me + "raj"]); //kiran raj
+
+    </script>
+</body>
+</html>

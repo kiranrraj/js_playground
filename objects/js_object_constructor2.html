@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+
+        function Car(company, model, year, fuel){
+            this.company = company;
+            this.model = model;
+            this.year = year;
+            this.fuel = fuel;
+            this.printDet = function(){
+                console.log(`${this.company} - ${this.model} - ${this.year} - ${this.fuel}`);
+            }
+        };
+
+        let myCar = new Car("Hyundai", "i10", 2019, "petrol");      
+        let friendsCar = new Car("Hyundai", "i20", 2021, "diesel");
+        myCar.printDet();       // Hyundai - i10 - 2019 - petrol
+        friendsCar.printDet();  // Hyundai - i20 - 2021 - diesel
+
+
+
+        function Car1(company, model, year, fuel){;
+            return {company : "BMW", model, year, fuel, owner: "kiran"}
+        };
+
+        function printD(){
+            console.log(`${this.company} - ${this.model} - ${this.year} - ${this.fuel} - ${this.owner}`);
+        }
+
+        let car10 = new Car1("Hyundai", "i10", 2019, "petrol");
+        console.log(car10.company);  // BMW
+        console.log(car10.year);     // 2019
+        car10.printDet = printD;
+        car10.printDet();            // BMW - i10 - 2019 - petrol - kiran
+
+        
+        let car11 = new Car1("Hyundai", "i20", 2020, "Electric");
+        car11.printDet = printD;
+        car11.printDet();           //BMW - i20 - 2020 - Electric - kiran
+
+    </script>
+</body>
+</html>

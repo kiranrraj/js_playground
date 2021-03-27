@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+
+        let obj = {};
+        obj.name = "kiran";
+        obj.title = "Mr.";
+        console.log(obj);           //{name: "kiran", title: "Mr."}
+        console.log(typeof obj);    //object
+
+// -----------------------------------------------
+        let test = {
+            name : undefined
+        }
+        console.log(test.name);     //undefined
+
+        let test1 = {
+            name : null
+        }
+        console.log(test1.name);    //null
+
+// -----------------------------------------------
+
+function GreetAdmin(){
+            console.log(`Hello ${this. name}`);
+        }
+
+        let admin = {
+            name: "kiran raj",
+            admin: true,
+            greet: function(){
+                console.log(`Hello ${this. name}`);
+            }
+        }
+
+        let admin2 = {
+            name: "Rajeesh",
+            admin: true
+        }
+        admin2.greet2 = GreetAdmin;
+
+        let admin3 = {
+            name: "Vishnu R",
+            admin: true,
+            greet3(){
+                console.log(`Hello ${this. name}`);
+            }
+        }
+
+        admin.greet();              //Hello kiran raj
+        admin2.greet2();            //Hello Rajeesh
+        admin3.greet3()             //Hello Vishnu R
+
+        console.log(admin3);        //{name: "Vishnu R", admin: true, greet3: ƒ}
+
+        delete admin3.greet3;
+        console.log(admin3);        //{name: "Vishnu R", admin: true}
+
+
+    </script>
+</body>
+</html>

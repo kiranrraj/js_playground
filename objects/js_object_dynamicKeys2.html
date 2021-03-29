@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+
+<body>
+    <script>
+        let fs = "fav-";
+        let title = "mr";
+        let x  = 4, y = 5; 
+
+        let user = {
+            [fs + "sports"]: "Cricket, football",
+            [title]: "kiranraj",
+            [x + y ] : "Sum is 9"
+        }
+
+        console.log(user["fav-sports"]);     // Cricket, football
+        // console.log(user."fav-sports");   // error
+        console.log(user[title]);            // kiranraj
+        console.log(user["mr"]);             // kiranraj
+        console.log(user.mr);                // kiranraj
+        console.log(user[9]);                // Sum is 9
+        console.log(user["9"]);                // Sum is 9
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+        
+        const promiseDemo = new Promise(function(resolve, reject){
+            let x = 20, y = 30;
+
+            if(x + y == 50){
+                resolve("Promise is a success")
+            }else {
+                reject("Promise is a failure")
+            }
+        }); 
+            
+        promiseDemo
+        .then((result) => console.log(result))
+        .catch((result) => console.error(result));
+
+
+
+        const demoFunction = function(x ,y){
+            return new Promise(function(resolve ,reject) {
+                if (x + y < 100){
+                    resolve("The value is normal");
+                }else {
+                    reject("value is abnormal");
+                } 
+            });
+        };
+
+        demoFunction(30, 40)
+        .then((result) => console.log(result))
+        .catch((result) => console.error(result));
+
+        demoFunction(30, 400)
+        .then((result) => console.log(result))
+        .catch((result) => console.error(result));
+
+    </script>
+</body>
+</html>

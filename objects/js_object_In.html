@@ -14,13 +14,29 @@
             lname: "raj",
             email: "kiranr@gmail.com",
             admin: true,
+            7:777,
+            "next position" : "Senior Lead",
             greet: function(){
                 console.log(`Hello ${this. name}`);
             }
         }
 
-        console.log("lname" in admin); //true
-        console.log("fn" in admin);    //false    
+        console.log("lname" in admin);         // true
+        console.log("fn" in admin);            // false 
+        console.log(7 in admin);               // true
+        console.log("next position" in admin); // true
+        console.log("greet" in admin);         // true
+
+        let name = {
+            fullname :{
+                fname: "kiran",
+                lname: "raj",
+            },
+            email: "kiranr@gmail.com",
+        }
+
+        console.log("fname" in name);          //false
+        console.log("fname" in name.fullname); //true
 
     </script>
 </body>

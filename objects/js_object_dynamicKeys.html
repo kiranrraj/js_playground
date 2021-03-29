@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Objects</title>
 </head>
+
 <body>
     <script>
 
@@ -16,12 +18,12 @@
             fname: "kiran",
             lname: "raj",
             email: "kiranr@gmail.com",
-            "7":777,
-            [avengers]:"lets go",  //tells that the property key should be taken from avengers
-            [me + "raj"] : "kiran raj",
+            "7": 777,
+            [avengers]: "lets go",  //tells that the property key should be taken from avengers
+            [me + "raj"]: "kiran raj",
             admin: true,
-            greet: function(){
-                console.log(`Hello ${this. name}`);
+            greet: function () {
+                console.log(`Hello ${this.name}`);
             }
         }
 
@@ -30,8 +32,8 @@
         console.log(admin[key]);        //kiran
         console.log(admin['key']);      //undefined
 
-        let x = 3, y =4;
-        console.log(admin[x+y]);        //777
+        let x = 3, y = 4;
+        console.log(admin[x + y]);        //777
 
 
         //[avengers]:"lets go" --> captain: "lets go"
@@ -50,6 +52,18 @@
         console.log(admin["kiran" + "raj"]); //kiran raj
         console.log(admin[me + "raj"]); //kiran raj
 
+        let myAdmin = {
+            fname: "kiran",
+            "7": 777,
+            "-telephone" : 2244,
+            "full name": "kiran raj",
+        }
+
+        console.log(myAdmin['fname']);
+        console.log(myAdmin["7"]);
+        console.log(myAdmin['-telephone']);
+        console.log(myAdmin["full name"]);
     </script>
 </body>
+
 </html>

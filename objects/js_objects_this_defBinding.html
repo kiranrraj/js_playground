@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+
+<body>
+    <script>
+
+        // Default binding without 'strict'
+        var num = 10;
+        function printNum() {
+            console.log(this.num);
+        }
+        printNum();         //10
+
+
+        // Using let
+        let numlet = 10;
+        function printNumlet() {
+            console.log(this.numlet);
+        }
+        printNumlet();       // undefined
+
+
+        // Default binding with 'strict'
+        var numS = 10;
+        function printNumS() {
+            "use strict";
+            console.log(this.numS);
+        }
+        //printNumS();         // Uncaught TypeError: 
+                               // Cannot read property 'numS' of undefined
+
+
+
+        //Implicit Binding
+        function printName(){
+            console.log(this.name);
+        }                     
+        let obj1 = {
+            name:"cat1",
+            pn : printName,
+        }
+
+        let obj2 = {
+            name:"cat2",
+            pn: printName,
+        }
+
+        let obj3 = {
+            name:"cat2",
+            pn: printName,
+            name: {
+                name1: "cat3"
+            }
+        }
+
+        obj2.pn();
+        obj1.pn();
+        obj3.pn();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+
+<body>
+    <script>
+        // Call function (hard binding)
+        function displayName(){
+            console.log(`${this.fname} ${this.lname}`);
+        }
+
+        let obj1 = {
+            fname: "kiran",
+            lname: "raj"
+        }
+
+        let obj2 = function(){
+            displayName.call(obj1);
+        }
+
+        obj2(); //kiran raj
+
+        // Apply function
+
+        function displayNameWith(initials){
+            console.log(`${this.fname} ${this.lname} ${initials}`);
+        }
+
+        let obj11 = {
+            fname: "kiran",
+            lname: "raj"
+        }
+
+        let obj21 = function(){
+            displayNameWith.apply(obj11, arguments);
+        }
+
+        obj21("R"); //kiran raj R
+
+        // Bind function
+        let obj31 = {
+            fname: "kiran",
+            lname: "raj"
+        }
+
+        function displayNameBind(initials){
+            console.log(`${this.fname} ${this.lname} ${initials}`);
+        }
+
+        let obj22 = displayNameBind.bind(obj31, "R");
+
+        obj22(); //kiran raj R
+
+
+    </script>
+</body>
+
+</html>

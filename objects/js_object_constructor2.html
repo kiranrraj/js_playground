@@ -24,6 +24,14 @@
         myCar.printDet();       // Hyundai - i10 - 2019 - petrol
         friendsCar.printDet();  // Hyundai - i20 - 2021 - diesel
 
+        console.log(myCar.company);     // Hyundai
+        console.log(myCar.year);        // 2019
+        console.log(friendsCar.model);  // i20
+        console.log(friendsCar.fuel);   // diesel
+
+        let newCar = new Car("Audi", "A6", "2000");
+        console.log(newCar.fuel);
+        console.log(newCar);
 
 
         function Car1(company, model, year, fuel){;

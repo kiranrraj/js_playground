@@ -20,8 +20,7 @@
         }); 
             
         promiseDemo
-        .then((result) => console.log(result))
-        .catch((result) => console.error(result));
+        .then((result) => console.log(result), (result) => console.error(result));
 
 
 
@@ -36,12 +35,10 @@
         };
 
         demoFunction(30, 40)
-        .then((result) => console.log(result))
-        .catch((result) => console.error(result));
+        .then((result) => console.log(result), (result) => console.error(result));
 
         demoFunction(30, 400)
-        .then((result) => console.log(result))
-        .catch((result) => console.error(result));
+        .then((result) => console.log(result),(result) => console.error(result));
 
     </script>
 </body>

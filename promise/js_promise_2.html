@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+
+        const demoFunction = function(x ,y){
+            return new Promise(function(resolve ,reject) {
+                if (x + y < 100){
+                    resolve("The value is normal");
+                }else {
+                    reject("value is abnormal");
+                } 
+            });
+        };
+
+        function onSuccessful(result){
+            console.log(result);
+        }
+
+        function onFailure(result){
+            console.error(result);
+        }
+
+        demoFunction(30, 40).then(onSuccessful, onFailure); //The value is normal
+        demoFunction(400, 40).then(onSuccessful, onFailure); // value is abnormal
+
+    </script>
+</body>
+</html>

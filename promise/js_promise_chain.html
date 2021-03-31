@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+
+        var promise = new Promise(function (resolve, reject){
+            resolve(10);
+        });
+        console.log(promise); 
+        // __proto__: Promise
+        // [[PromiseState]]: "fulfilled"
+        // [[PromiseResult]]: 10
+
+        let promise2 = promise.then(function(result){
+            console.log(result);     //10
+            return result * 2;
+        });
+        console.log(promise2);
+        // __proto__: Promise
+        // [[PromiseState]]: "fulfilled"
+        // [[PromiseResult]]: 20
+
+        promise2.then(function(result){
+            console.log(result);     //20 
+            return result * 2;
+        });
+
+        let promise3 = promise2.then(function(result){
+            console.log(result);     //20
+            return result * 2;
+        });
+        console.log(promise3);
+        // __proto__: Promise
+        // [[PromiseState]]: "fulfilled"
+        // [[PromiseResult]]: 40
+
+        promise3.then(function(result){
+            console.log(result);     //40 
+            return result * 2;
+        });
+
+
+    </script>
+</body>
+</html>

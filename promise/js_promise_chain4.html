@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+        let p1 = new Promise(function (resolve, reject){
+            resolve(10);
+        });
+        let p2 = p1.then( function(result){
+            console.log(result);      // 10
+            result = result * 10;   
+            return result
+        });
+        let p3 = p2.then( function(result){
+            console.log(result);      //100
+            result = result * 10;  
+            return result
+        });
+        let p4 = p3.then( function(result){ 
+            console.log(result);      //1000 
+            result = result * 10;   
+            return result
+        });
+
+        let pp1 = new Promise(function (resolve, reject){
+            resolve(10);
+        });
+        let pp2 = pp1.then( function(result){
+            console.log(result);      // 10
+            result = result * 10;   
+            return result
+        });
+        let pp3 = pp1.then( function(result){
+            console.log(result);      //10
+            result = result * 10;  
+            return result
+        });
+        let pp4 = pp1.then( function(result){ 
+            console.log(result);      //10
+            result = result * 10;   
+            return result
+        });
+        
+    </script>
+</body>
+</html>

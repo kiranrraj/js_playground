@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+<body>
+    <script>
+
+        // Class Declaration
+        class Name {
+            constructor(fname, lname) {
+                this.fname = fname;
+                this.lname = lname;
+            }
+
+            printName(){
+                console.log(`${this.fname} ${this.lname}`);
+            }
+        }
+
+        let myName = new Name("kiran", "raj"); 
+        myName.printName();                      // kiran raj
+
+        let myName1 = new Name("John", "Doe"); 
+        myName1.printName();                     // John Doe
+
+        // Class expression
+
+        // Class Expression unnamed
+        let FriendsName = class {
+            constructor(fname, lname) {
+                this.fname = fname;
+                this.lname = lname;
+            }
+
+            printName(){
+                console.log(`${this.fname} ${this.lname}`);
+            }
+        }
+
+        let Friend1 = new FriendsName("kiran", "raj"); 
+        Friend1.printName();                      // kiran raj
+
+        let Friend2 = new FriendsName("John", "Doe"); 
+        Friend2.printName();                      // John Doe
+
+        // Class expression named
+
+        let EnemyName = class FakeFriend{
+            constructor(fname, lname) {
+                this.fname = fname;
+                this.lname = lname;
+            }
+
+            printName(){
+                console.log(`${this.fname} ${this.lname}`);
+            }
+        }
+
+        // let enemy1 = new FakeFriend("kiran", "raj"); 
+        // Uncaught ReferenceError: FakeFriend is not defined
+
+        let enemy2 = new EnemyName("John", "Doe"); 
+        enemy2.printName();                     // John Doe
+
+
+    </script>
+</body>
+</html>

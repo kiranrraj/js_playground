@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Admin{
+            constructor(fname, lname) {
+                this.fname = fname;
+                this.lname = lname;
+                this.isAdmin = true;
+            }
+
+            printName(){
+                console.log(`${this.fname} ${this.lname}`);
+            }
+
+            isAdmin(){
+                if(this.isAdmin){
+                    console.log("The user is admin");
+                }else {
+                    console.log("The user is admin");
+                }
+            }
+            setUser(){
+                this.isAdmin = false;
+            }
+        }
+
+        let kiran = new Admin("kiran", "raj");
+
+        console.log(typeof Admin);  //function
+        console.log(typeof kiran);  //object
+
+        console.log(Admin === Admin.prototype.constructor); //true
+        console.log(Admin);
+        console.log(Admin.prototype);
+        console.log(kiran === Admin.prototype.constructor); //false
+        console.log(kiran.prototype); //undefined
+
+        console.log(Admin.prototype.setUser); //ƒ setUser(){ this.isAdmin = false;}
+        console.log(kiran.setUser); //ƒ setUser(){ this.isAdmin = false;}
+
+        console.log(Object.getOwnPropertyNames(Admin));
+        //["length", "prototype", "name"]
+        console.log(Admin.name, Admin.length, Admin.prototype);
+        //Admin 2 {constructor: ƒ, printName: ƒ, isAdmin: ƒ, setUser: ƒ}
+
+        console.log(Object.getOwnPropertyNames(kiran)); 
+        //["fname", "lname", "isAdmin"]
+
+        console.log(Object.getOwnPropertyNames(Admin.prototype)); 
+        //["constructor", "printName", "isAdmin", "setUser"]
+
+        console.log(kiran.isAdmin);  //true
+        kiran.setUser();
+        console.log(kiran.isAdmin);  //false
+    </script>
+</body>
+</html>

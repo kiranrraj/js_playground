@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Classes</title>
+</head>
+<body>
+    <script>
+        class Automobile{
+            constructor(type, fuel, speed){
+                this.type = type;
+                this.fuel = fuel;
+                this.speed = speed;
+            }
+
+            fuelStatus(liter){
+                this.liter = liter;
+                console.log(`Contains ${this.liter} ${this.fuel}`)
+            }
+
+            printDetails(){
+                console.log(`${this.type} - ${this.fuel} - ${this.speed}`);
+            }
+        }
+
+        let car = new Automobile("sedan", "petrol", "100km/h");
+        car.fuelStatus(20); //Contains 20 petrol
+        car.printDetails(); //sedan - petrol - 100km/h
+
+        class Bus extends Automobile{
+            constructor(type, fuel, speed,transport){
+                super(type, fuel, speed);
+                this.transport = transport;
+            }
+
+            printDetails(){
+                console.log(`${this.type} - ${this.fuel} - ${this.speed} Transport type ${this.transport}`);
+            }
+
+        }
+
+        let bus1 = new Bus("sedan", "petrol", "100km/h", "Public");
+        bus1.fuelStatus(20); //Contains 20 petrol
+        bus1.printDetails(); //sedan - petrol - 100km/h Transport type Public
+    </script>
+</body>
+</html>

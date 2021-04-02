@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Arrow Function</title>
+</head>
+<body>
+    <script>
+        function addSquare(x,y){
+            return x*x + y*y;
+        }
+        console.log(addSquare(10,2));      //104
+
+        let arr_addSquare = (x,y) => x*x + y*y;
+        console.log(arr_addSquare(10,2));  //104
+
+        // ---------------------------------------------
+
+        function divResult(x,y){
+            let result = x*y;
+            return result /2;
+        }
+        console.log(divResult(10,2));      //10
+
+        let arr_divResult = (x,y) => {
+            let result = x*y;
+            return result /2;
+        }
+
+        console.log(arr_divResult(10,2));  //10
+
+    </script>
+</body>
+</html>

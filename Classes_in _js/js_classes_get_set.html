@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Classes</title>
+</head>
+<body>
+    <script>
+        class Triangle{
+            constructor(height, base) {
+                this.height = height;
+                this.base = base;
+            }
+
+            area_triangle(){
+                return 0.5 *(this.height * this.base);
+            }
+
+            get area(){
+                return this.area_triangle();
+            }
+        }
+
+        let triangle1 = new Triangle(13,5);
+        console.log(triangle1.area);
+    </script>
+</body>
+</html>

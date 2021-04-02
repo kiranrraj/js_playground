@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Destructuring Examples</title>
+</head>
+<body>
+    <script>
+        let arr_name = ["kiran", "raj"];
+        let [fname, lname] = arr_name;
+        console.log(fname, lname);      //kiran raj
+
+        let obj = {
+            fn: "kiran",
+            ln: "raj"
+        }
+        let {fn, ln} = obj;
+        console.log(fn, ln)             //kiran raj
+
+        let arr = [1,2,3,4,5];
+        let [a,b,c] = arr;
+        console.log(a,b,c);             //1  2  3
+
+        //default values
+
+        let [a2=10, b2, c2] = arr;
+        console.log(a2,b2,c2);          //1  2  3
+
+        let [a3, b3, c3=30] = [1,2];
+        console.log(a3,b3,c3);          //1  2  30
+
+        function numberOut(){
+            return [100, 200, 300];
+        }
+        let [x,y,z] = numberOut();
+        console.log(x,y,z);             // 100 200 300
+
+        [x,,z] = [1,2,3]
+        console.log(x,z);               //1 3
+        [z,,x] = [1,2,3]
+        console.log(x,z);               // 3 1
+    </script>
+</body>
+</html>

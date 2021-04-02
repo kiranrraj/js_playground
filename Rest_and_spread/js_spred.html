@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Rest and spread</title>
+</head>
+<body>
+    <script>
+        let name = "kiran raj";
+        console.log(...name);
+
+        function addNum(a,b,c){
+            console.log(a+b+c);
+            console.log(a,b,c)
+        }
+        let arr = [10,20,30];
+
+        addNum(...arr);
+        addNum(arr);
+
+        function findMax(arr1,arr2){
+            let max1 = Math.max(...arr1, ...arr2);
+            console.log(`Max element is ${max1}`) 
+        }
+        let arr2 =[20,40,100,30,60,80];
+        arr1 = [23,56,90,87,101,45];
+
+        findMax(arr1, arr2);
+
+
+
+    
+    </script>
+</body>
+</html>

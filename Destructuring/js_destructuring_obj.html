@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Destructuring Examples</title>
+</head>
+<body>
+    <script>
+
+        // Object destructuring
+
+        let obj = {
+            fn: "kiran",
+            ln: "raj"
+        }
+        let {fn, ln} = obj;
+        console.log(fn, ln)             //kiran raj
+
+        // Object literal destructuring assingment
+
+        let x, y;
+        ({x,y} = {x:100, y:200});
+        console.log(x,y);                      // 100 200
+        ({x,y} = {y:200});       
+        console.log(x,y);                      // undefined 200
+        let{ a = 10, b = 20} = {a:100};
+        console.log(a,b);                      // 100 20
+
+
+        let obj2 = {a4: "apple", b4: "ball"};
+        let {a4: aa, b4: bb} = obj2;
+        console.log(obj2.a4, obj2.b4);          //apple ball
+        console.log(aa, bb);                    //apple ball
+
+
+        let key = "roll";
+        let num = [1, 2];
+        let {[key] : fname} = {fullName : "kiran raj"};
+        console.log(fname);
+    </script>
+</body>
+</html>

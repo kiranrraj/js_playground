@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Classes</title>
+</head>
+
+<body>
+    <script>
+        // class expression
+        let Admin1 = class {
+            constructor(fname, lname){
+                this.fname = fname;
+                this.lname = lname;
+            }
+            printMsg() {
+                console.log(`${this.fname} ${this.lname}`)
+            }
+        }
+
+        let a1 = new Admin1("john", "doe");
+        a1.printMsg();
+
+
+        //Named class expression
+        let Admin2 = class AdminMaster {
+            constructor(fname, lname){
+                this.fname = fname;
+                this.lname = lname;
+            }
+            printMsg() {
+                console.log(`${this.fname} ${this.lname}`)
+            }
+        }
+        let a2 = new Admin2("john", "doe");
+        a2.printMsg();
+    </script>
+</body>
+
+</html>

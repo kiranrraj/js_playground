@@ -12,7 +12,10 @@
         let obj = {};
         obj.name = "kiran";
         obj.title = "Mr.";
-        console.log(obj);           //{name: "kiran", title: "Mr."}
+        obj.newKey = "test";
+        console.log(obj.newKey);    //test       
+        delete obj.newKey;
+        console.log(obj.newKey);    //undefined       
         console.log(typeof obj);    //object
 
 // -----------------------------------------------

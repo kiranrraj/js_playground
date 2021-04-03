@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects</title>
+</head>
+
+<body>
+    <script>
+
+        function Employee(name, dept, emp_id,position) {
+            this.name = name || "";
+            this.dept = dept || "general" ;
+            this.emp_id = emp_id || 1001;
+            this.position = position || "employee";
+        }
+
+        function Manager(name, dept, emp_id,role, area,position ="Manager") {
+            this.base = Employee;
+            this.base(name, dept, emp_id, "Manager" );
+            this.role = role || "Accounts";
+            this.area = area || "Trivandrum";
+        }
+        Manager.prototype = Object.create(Employee.prototype);
+        Manager.prototype.constructor = Manager;
+
+
+        function Worker(location) {
+            Employee.call(this);
+            this.location = location || "Trivandrum";
+        }
+        Worker.prototype = Object.create(Employee.prototype);
+        Worker.prototype.constructor = Worker;
+
+
+        function Sales(target, product) {
+            Worker.call(this);
+            this.target = target || 100000;
+            this.product = product || "Soap";
+        }
+        Sales.prototype = Object.create(Worker.prototype);
+        Sales.prototype.constructor = Sales;
+
+
+        function Accounts() {
+            Worker.call(this);
+            this.level = 2;
+        }
+        Accounts.prototype = Object.create(Worker.prototype);
+        Accounts.prototype.constructor = Accounts;
+
+
+        function Store(section) {
+            Worker.call(this);
+            this.section = section || "Medical Equipment";
+        }
+        Store.prototype = Object.create(Worker.prototype);
+        Store.prototype.constructor = Store;
+
+        let arun = new Employee;
+        let achu = new Manager;
+        let manu = new Worker;
+        let shilpa = new Sales;
+        let shiva = new Accounts;
+        let kiran = new Store;
+
+        console.log(kiran);
+        // {
+        //     dept: "general"
+        //     emp_id: 1001
+        //     location: "Trivandrum"
+        //     name: ""
+        //     position: "employee"
+        //     section: "Medical Equipment"
+        // }
+
+        for (prop in kiran) {
+            console.log(prop)
+        }
+        // name dept emp_id position location section constructor 
+
+
+        Worker.prototype.medical = "O.K.";
+
+        console.log(kiran);
+        // {
+        //     dept: "general"
+        //     emp_id: 1001
+        //     location: "Trivandrum"
+        //     name: ""
+        //     position: "employee"
+        //     section: "Medical Equipment"
+        // }
+        for (prop in kiran) {
+            console.log(prop)
+        }
+        // name dept emp_id position location section constructor medical
+
+        let raj = new Manager("kiran raj r", "Product", 223,"Product manager", "Trivandrum" ); 
+        //name, dept, emp_id, position, role, area
+        console.log(raj);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Classes</title>
+</head>
+
+<body>
+    <script>
+       const admin1 = {
+           name: "Varun"
+       }
+       
+       Object.defineProperty(admin1, "getName", {
+           get: function(){
+               return this.name;
+           }
+       });
+
+       Object.defineProperty(admin1, "setName", {
+           set: function(value){
+               this.name = value;
+           }
+       });
+
+        console.log(admin1.getName)  // varun
+        admin1.setName = "kiran";
+        console.log(admin1.name)  // kiran
+
+    </script>
+</body>
+
+</html>

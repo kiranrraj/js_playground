@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Higher Order Functions</title>
+</head>
+
+<body>
+    <script>
+        let arr1 = [2, 4, 6, 8, 11, 5];
+        let arr_map = arr1.map(elem => elem * elem);
+        console.log(arr_map); //[4, 16, 36, 64, 121, 25]
+        console.log(arr1); //[2, 4, 6, 8, 11, 5]
+
+        let arr11 = [2, 4, 6, 8, 11, 5];
+        let arr_map1 = [];
+        for (i = 0; i < arr11.length; i++) {
+            arr_map1.push(arr11[i] * arr11[i]);
+        }
+        console.log(arr_map1)
+
+        let arr2_map = arr1.map((elem, index, a) => {
+            console.log(`Element ${elem} Index ${index} Array ${a}`);
+            //  Element 2 Index 0 Array 2,4,6,8,11,5
+            //  Element 4 Index 1 Array 2,4,6,8,11,5
+            //  Element 6 Index 2 Array 2,4,6,8,11,5
+            //  Element 8 Index 3 Array 2,4,6,8,11,5
+            //  Element 11 Index 4 Array 2,4,6,8,11,5
+            //  Element 5 Index 5 Array 2,4,6,8,11,5
+        });
+
+
+    </script>
+</body>
+
+</html>

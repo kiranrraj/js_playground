@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Higher Order Functions</title>
+</head>
+
+<body>
+    <script>
+        var names = ["kiran", "vishnu", "manu", "varun", "adi"];
+        let names_cap = names.map((index)=>{
+            return index.charAt(0).toUpperCase()+ index.slice(1);
+        })
+
+        console.log(names_cap);
+
+        const divide = function(x,y){
+            return x/y;
+        }
+
+        const multiply = function(x,y){
+            return x*y;
+        }
+
+        const add = function(x,y){
+            return x + y;
+        }
+
+        const substract = function(x,y){
+            return x - y;
+        }
+
+        let calc_arr = [divide, multiply, add, substract];
+
+        console.log(calc_arr[0](10,20));
+        console.log(calc_arr[1](10,20));
+        console.log(calc_arr[2](10,20));
+        console.log(calc_arr[3](10,20));
+
+    </script>
+</body>
+
+</html>

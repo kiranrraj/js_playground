@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Functions</title>
+</head>
+<body>
+    <script>
+        let fullName = function(fname, lname){
+            return (`${fname}${lname}`);
+        }
+        let randNum = function(year) {
+            let rNum = Math.round( Math.random() * year);
+            return rNum;
+        }
+
+        function createEmail(fn,ln, yr, fun1, fun2){
+            let full_name = fun1(fn,ln);
+            let num = fun2(yr);
+            console.log(`${full_name}_${num}@gmail.com`)
+            return function () {
+                let rdn1 = Math.random()*10
+                let rdn2 = Math.random()*100
+                let rand = Math.round( rdn1 * rdn2 )
+                return(`Password: ${ln}${rand}${fn}${yr}`);
+            } 
+        }
+
+        let pass = createEmail("kiran", "raj", 1922, fullName, randNum)();
+        console.log(pass);
+
+    </script>
+</body>
+</html>

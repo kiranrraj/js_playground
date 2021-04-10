@@ -12,7 +12,19 @@
     <script>
     let arr_obj = [{p: 10}, {p: 10}, {p: 10}]
     let sum = arr_obj.reduce((ac, cv) => ac + cv.p, 0)
-    console.log(sum)
+    console.log(sum);
+    
+    let arr1 = [10,20,30,40,50];
+    let sum1 = arr1.reduce((ac, cv, index, array) => { 
+        console.log(`Accumulator:${ac}  Current value:${cv}  Index:${index}  Array${array}`);
+        return ac + cv;
+    },0)
+
+    // Accumulator:0  Current value:10  Index:0  Array10,20,30,40,50
+    // Accumulator:10  Current value:20  Index:1  Array10,20,30,40,50
+    // Accumulator:30  Current value:30  Index:2  Array10,20,30,40,50
+    // Accumulator:60  Current value:40  Index:3  Array10,20,30,40,50
+    // Accumulator:100  Current value:50  Index:4  Array10,20,30,40,50
     </script>
 </body>
 

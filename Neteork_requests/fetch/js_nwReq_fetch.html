@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Network Request</title>
+</head>
+<body>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/users/1')
+            .then(response => response.json())
+            .then(json => console.log(
+                `${json.name}\n${json.username}\n${json.email}`));
+
+        let data = fetch('https://jsonplaceholder.typicode.com/users/').then(response => response.json());
+        console.log(data);
+        if (data.ok){
+            console.log("Data fetched");
+        }
+    </script>
+</body>
+</html>

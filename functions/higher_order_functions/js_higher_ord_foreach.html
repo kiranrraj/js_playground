@@ -11,7 +11,26 @@
 <body>
     <script>
     let arr1 = [10, 20, 30, 40, 50];
-    arr1.forEach((elem) => console.log(elem*elem));
+    arr1.forEach((elem, index, arr) => console.log(elem*elem));
+
+    // forEach always return "undefined"
+    let something = arr1.forEach((elem) =>  elem* elem);
+    console.log(something);   //undefined
+
+    let resultArr = []
+    let result = arr1.forEach((elem) =>{  
+        resultArr.push (elem* elem)});
+        console.log(resultArr);   //[100, 400, 900, 1600, 2500]
+
+    let arr = [10, 20, 30, 40, 50];
+    arr.forEach((elem, index, array) => { 
+        console.log(`Element:${elem}  Position:${index}  Array:${array}  Result:${elem*elem}`)
+    });
+    // Element:10  Position:0  Array:10,20,30,40,50  Result:100
+    // Element:20  Position:1  Array:10,20,30,40,50  Result:400
+    // Element:30  Position:2  Array:10,20,30,40,50  Result:900
+    // Element:40  Position:3  Array:10,20,30,40,50  Result:1600
+    // Element:50  Position:4  Array:10,20,30,40,50  Result:2500
     
     </script>
 </body>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Higher Order Functions</title>
+</head>
+
+<body>
+    <script>
+    let arr = [2,4,6,8,10];
+    let result_arr = [];
+    let r1 = arr.every((elem)=> { 
+        result_arr.push(elem % 2 == 0)
+        return elem % 2 == 0
+    });
+    console.log(result_arr); //[true, true, true, true, true]
+    console.log(r1); //True
+
+
+    let arr2 = [2,4,6,8,1,3,4,7];
+    let result_arr2 = [];
+    let r22 = arr2.every((elem)=> { 
+        result_arr2.push(elem % 2 == 0)
+        return elem % 2 == 0
+    });
+    console.log(result_arr2)
+    console.log(r22); //True
+
+
+    let r2 = arr2.every((elem, index, array)=> { 
+
+        console.log(`${elem} => ${index} => ${array}`);
+        // 2 => 0 => 2,4,6,8,1,3,4,7
+        // 4 => 1 => 2,4,6,8,1,3,4,7
+        // 6 => 2 => 2,4,6,8,1,3,4,7
+        // 8 => 3 => 2,4,6,8,1,3,4,7
+
+        return elem % 2 == 0
+    });
+
+    console.log(r2); // False
+
+    </script>
+</body>
+
+</html>

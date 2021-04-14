@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Network Request</title>
+</head>
+<body>
+    <script>
+
+        // Converting the response to text format
+        fetch('https://jsonplaceholder.typicode.com/users/1')
+            .then(response => {
+                console.log(response.ok, response.status);  // true 200
+                return response.text();
+            })
+            .then(text => {
+                console.log(typeof text)                    // string
+                console.log(text); 
+            })
+
+
+//                  Output of console.log(text)
+// {
+//   "id": 1,
+//   "name": "Leanne Graham",
+//   "username": "Bret",
+//   "email": "Sincere@april.biz",
+//   "address": {
+//     "street": "Kulas Light",
+//     "suite": "Apt. 556",
+//     "city": "Gwenborough",
+//     "zipcode": "92998-3874",
+//     "geo": {
+//       "lat": "-37.3159",
+//       "lng": "81.1496"
+//     }
+//   },
+//   "phone": "1-770-736-8031 x56442",
+//   "website": "hildegard.org",
+//   "company": {
+//     "name": "Romaguera-Crona",
+//     "catchPhrase": "Multi-layered client-server neural-net",
+//     "bs": "harness real-time e-markets"
+//   }
+// }
+
+       
+fetch('https://jsonplaceholder.typicode.com/users/1')
+            .then(response => {
+                console.log(response.ok, response.status);  //true 200
+                return response.json();
+            })
+            .then(json => {
+                console.log(typeof json)                    // object
+                console.log(json); 
+            })
+
+
+//               Output of console.log(json)
+// {          
+// address:
+//     city: "Gwenborough"
+//     geo:
+//         lat: "-37.3159"
+//         lng: "81.1496"
+//     street: "Kulas Light"
+//     suite: "Apt. 556"
+//     zipcode: "92998-3874"
+// company:
+//     bs: "harness real-time e-markets"
+//     catchPhrase: "Multi-layered client-server neural-net"
+//     name: "Romaguera-Crona"
+// email: "Sincere@april.biz"
+// id: 1
+// name: "Leanne Graham"
+// phone: "1-770-736-8031 x56442"
+// username: "Bret"
+// website: "hildegard.org"          
+    </script>
+</body>

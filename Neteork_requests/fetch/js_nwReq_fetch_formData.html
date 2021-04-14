@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Network Request</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="" id="form1" name="form1">
+            <input type="text" name="fname" placeholder="First Name" >
+            <br>
+            <input type="text" name="lname" placeholder="Last Name">
+            <br>
+            <Button id="submit">Submit</Button>
+        </form>
+    </div>
+    <script>
+
+        const btn = document.getElementById('submit');
+        const form1 = document.getElementById('form1');
+        
+        let formData1;
+
+        btn.addEventListener('click', (e)=>{
+            e.preventDefault();
+            let data = new FormData(form1);
+            const obj = Object.fromEntries(data.entries());
+
+            for ([key, val] of data)
+                {
+                    console.log(key, val);
+                }
+
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {'Content-type': 'application/json; charset=UTF-8'}
+        })
+        .then((response) => response.text())
+        .then((text) => console.log(text));
+        })
+    </script>
+</body>
+
+</html>

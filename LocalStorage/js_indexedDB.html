@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Indexed DB</title>
+    <style>div{
+        margin: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    button{
+        margin-left: 10px;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <form name="whiskeyForm">
+            <fieldset>
+                <p>
+                    <label for="name">Whiskey: </label>
+                    <input type="text" id="name" placeholder="Whiskey Name" required />
+                </p>
+                <p>
+                    <label for="country">Country of Origin: </label>
+                    <input type="text" id="country" value="" required />
+                </p>
+                <p>
+                    <label for="age">Years Old: </label>
+                    <input type="text" inputmode="numeric" pattern="[\d]+" id="age" required />
+                </p>
+                <p>
+                    <label for="isOwned">Owned: </label>
+                    <input type="checkbox" id="isOwned" value="yes" />
+                </p>
+                <p>
+                    <button id="btnAdd">Add Whiskey</button>
+                    <button id="btnUpdate">Update Whiskey</button>
+                    <button id="btnDelete">Delete Whiskey</button>
+                    <button id="btnClear">Reset Form</button>
+                </p>
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+
+        let db = null;
+        let objStore = null;
+
+        // connect to the database
+        // let req = indexedDB.open(name, version);
+        let openReq = indexedDB.open("test", 3);
+        // openReq is an object 
+
+        // Connection failed
+        openReq.addEventListener('error', (err) => {
+            console.log(err);
+        });
+
+        // Connection Successful
+        openReq.addEventListener('success', (e) => {
+            db = e.target.result;
+            console.log('success', db);
+        });
+
+        // Database is ready but need upgrade
+        openReq.addEventListener('upgradeneeded', (e) => {
+            db = e.target.result;
+            console.log('upgrade', db);
+
+            let oldVer = ev.oldVersion;
+            let newVer = ev.newVersion || db.version;
+            console.log(`Database upgraded from version ${oldVer} to version ${newVer}`)
+
+            //Create an object store if no object store with the same name exists
+            if (!db.objectStoreNames.contains('testStore')) {
+                //db.createObjectStore(name[, keyOptions]);
+                objStore = db.createObjectStore('testStore', {
+                    keyPath: 'id'
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

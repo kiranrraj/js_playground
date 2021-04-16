@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Indexed DB</title>
+    <style>div{
+        margin: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    button{
+        margin-left: 10px;
+    }
+    </style>
+</head>
+<body>
+
+    <form name="whiskeyForm">
+        <fieldset>
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Name" required />
+        </div>
+          <div>
+            <label for="country">Country</label>
+            <input type="text" id="country" value="" required placeholder="Country" />
+        </div>
+          <div>
+            <label for="age">Age</label>
+            <input
+              type="text"
+              inputmode="numeric"
+              pattern="[\d]+"
+              id="age"
+              placeholder="Age"
+              required
+            />
+        </div>
+          <div>
+            <label for="isAdmin">Admin: </label>
+            <input type="checkbox" id="isAdmin" value="yes" />
+        </div>
+          <div>
+            <button id="btnAdd">Add User</button>
+            <button id="btnUpdate">Update User</button>
+            <button id="btnDelete">Delete User</button>
+            <button id="btnClear">Reset Form</button>
+        </div>
+        </fieldset>
+      </form>
+
+    <script>
+        function uid() {
+            let timmy = Date.now().toString(36).toLocaleUpperCase();
+            let randy = parseInt(Math.random() * Number.MAX_SAFE_INTEGER);
+            randy = randy.toString(36).slice(0, 12).padStart(12, '0').toLocaleUpperCase();
+            return ''.concat(timmy, '-', randy);
+        }
+
+        let db = null;
+        let objStore = null;
+
+        // connect to the database
+        // let req = indexedDB.open(name, version);
+        let openReq = indexedDB.open("test1", 1);
+        // openReq is an object 
+
+        // Connection failed
+        openReq.addEventListener('error', (err) => {
+            console.log(err);
+        });
+
+        // Connection Successful
+        openReq.addEventListener('success', (e) => {
+            db = e.target.result;
+            console.log('success', db);
+        });
+
+        // Database is ready but need upgrade
+        openReq.addEventListener('upgradeneeded', (e) => {
+            db = e.target.result;
+            console.log('upgrade', db);
+
+            let oldVer = e.oldVersion;
+            let newVer = e.newVersion || db.version;
+            console.log(`Database upgraded from version ${oldVer} to version ${newVer}`)
+
+            //Create an object store if no object store with the same name exists
+            if (!db.objectStoreNames.contains('testStore')) {
+                //db.createObjectStore(name[, keyOptions]);
+                objStore = db.createObjectStore('testStore', {
+                    keyPath: 'id'
+                });
+            }
+        });
+
+        document.whiskeyForm.addEventListener('submit', (ev) => {
+
+            ev.preventDefault();
+
+            let name = document.getElementById('name').value.trim();
+            let country = document.getElementById('country').value.trim();
+            let age = parseInt(document.getElementById('age').value);
+            let admin = document.getElementById('isAdmin').checked;
+
+            let testObj = {
+                id: uid(),
+                name,
+                country,
+                age,
+                admin,
+            };
+
+            let tx = makeTX('testStore', 'readwrite');
+
+            tx.oncomplete = (ev) => {
+                console.log(ev);
+            };
+            //Get the store object to perform transactions
+            let store = tx.objectStore('testStore');
+
+            // Create a request for the transaction
+            let request = store.add(testObj);
+
+            // handle request on success
+            request.onsuccess = (ev) => {
+                console.log('successfully added an object');
+            };
+
+            // handle request on failure
+            request.onerror = (err) => {
+                console.log('error in request to add');
+            };
+        });
+
+        function makeTX(storeName, mode) {
+            // Create a transaction
+            // db.transaction(store[, type]);
+            let tx = db.transaction(storeName, mode);
+            tx.onerror = (err) => {
+                console.warn(err);
+            };
+            return tx;
+        }
+
+    </script>
+</body>
+</html>

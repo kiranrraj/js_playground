@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind Method</title>
+</head>
+<body>
+    <script>
+        let obj1 = { count : 0 };
+
+        let obj2 = { count:100 };
+
+        function increaseCount() {
+            this.count++;
+            console.log(this.count);
+        }
+
+        increaseCount.bind(obj1)();     // 1
+        increaseCount.bind(obj2)();     // 101
+
+        let obj3 = {
+            fname : "kiran",
+            lname : "raj",
+            display(title) {
+                console.log(`${title}.${this.fname} ${this.lname}`)
+            }
+        }
+
+    obj3.display("Mr");                         // Mr.kiran raj
+
+    let obj4 = {fname:"Vishnu", lname: "R"};
+    let newOut = obj3.display.bind(obj4);
+    newOut("MR");                               // MR.Vishnu R
+
+    let obj5 = {fname:"Arun", lname: "V.I."};
+    obj3.display.bind(obj5)("Mr");              // Mr.Arun V.I.
+
+    </script>
+</body>
+</html>

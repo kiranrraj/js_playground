@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Method</title>
+</head>
+<body>
+    <script>
+        let obj1 = {
+            fname : "kiran",
+            lname : "raj",
+            display(fname, lname) {
+                console.log(`${this.fname} ${this.lname}`)
+            }
+        }
+
+        let obj2 = {
+            fname : "Vishnu",
+            lname : "R",
+        }
+
+        let obj3 = {
+            fname: "arun",
+            lname: "v.i.",
+            getDetails(age, place){
+                console.log(`${this.fname} ${this.lname}`);
+                console.log(`${age} : ${place}`);
+            }
+        };
+
+        obj1.display.apply(obj2);   //Vishnu R
+        
+        obj3.getDetails.apply(obj1, [33, 'venjaramoodu']);
+        // kiran raj 33 : venjaramoodu
+
+        obj3.getDetails.apply(obj2, [33, 'venjaramoodu']);
+        // Vishnu R 33 : venjaramoodu
+    </script>
+</body>
+</html>

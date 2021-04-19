@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Method</title>
+</head>
+<body>
+    <script>
+        let obj1 = {
+            count : 0,
+            increaseCount() {
+                this.count++;
+                console.log(this.count);
+            }
+        }
+
+        let obj2 = {
+            count:100
+        }
+        
+        obj1.increaseCount();           // 1
+        obj1.increaseCount();           // 2
+
+        obj1.increaseCount.call(obj2);  // 101
+        obj1.increaseCount.call(obj2);  // 102
+
+        let obj3 = {
+            count : 0,
+            increaseCount(dollar) {
+                for (i=0; i<5; i++){
+                    this.count++;
+                console.log(`${this.count}${dollar}`);
+                }
+            }
+        }
+
+        let obj4 = {
+            count:100
+        }
+
+        obj3.increaseCount.call(obj4, '$'); 
+        // 101$ 102$ 103$ 104$ 105$
+        // console.log(obj4.increaseCount());
+        // Uncaught TypeError: obj4.increaseCount is not a function
+    </script>
+</body>
+</html>

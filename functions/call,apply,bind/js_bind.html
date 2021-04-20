@@ -31,8 +31,9 @@
     obj3.display("Mr");                         // Mr.kiran raj
 
     let obj4 = {fname:"Vishnu", lname: "R"};
-    let newOut = obj3.display.bind(obj4);
-    newOut("MR");                               // MR.Vishnu R
+    // obj4.display("Mr");
+    let boundFn = obj3.display.bind(obj4);
+    boundFn("MR");                               // MR.Vishnu R
 
     let obj5 = {fname:"Arun", lname: "V.I."};
     obj3.display.bind(obj5)("Mr");              // Mr.Arun V.I.

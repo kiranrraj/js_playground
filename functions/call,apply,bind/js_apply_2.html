@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Method</title>
+</head>
+
+<body>
+    <script>
+        function Car(type, company, yr){
+            this.yr = yr;
+            this.company = company;
+            this.type = type;
+        }
+
+        function Sedan([type, company, yr]){
+            Car.apply(this, [type, company, yr]);
+            this.sedan = true;
+        }
+
+        function printDetails(){
+            console.log(`${this.type}`);
+            console.log(`${this.company}`);
+            console.log(`${this.yr}`);
+            if(this.sedan){
+                console.log("Sedan");
+            }
+        }
+
+        let myCar = new Sedan(['Petrol', 'Hyundai', 2019]);
+        printDetails.call(myCar);
+    </script>
+</body>
+
+</html>

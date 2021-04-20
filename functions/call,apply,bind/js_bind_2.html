@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind Method</title>
+</head>
+
+<body>
+    <script>
+        function add(x, y) {
+            return x + y + this.z
+        }
+
+        let obj1 = { z: 100 }
+        console.log(add.bind(obj1)(5, 5));   // 110
+
+        let obj3 = {
+            z: 100
+        }
+        console.log(add.bind(obj3)(5, 10));  // 115
+
+        function printThis() {
+            console.log(this);
+        }
+        printThis.bind(100)(); // Number {100}
+
+    </script>
+</body>
+
+</html>

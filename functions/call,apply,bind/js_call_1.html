@@ -16,10 +16,15 @@
             }
         }
 
+        obj1.display();
+
         let obj2 = {
             fname : "Vishnu",
             lname : "R",
         }
+
+        // obj2.display()
+        //Uncaught TypeError: obj2.display is not a function
         obj1.display.call(obj2);
     </script>
 </body>

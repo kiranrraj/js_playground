@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind Method</title>
+</head>
+
+<body>
+    <script>
+        let myName = {
+            fn: "kiran",
+            ln: "raj",
+            printName(){
+                console.log(`${this.fn} ${this.ln}`);
+            }
+        }
+
+        setTimeout(myName.printName, 1000);
+        //undefined undefined
+
+        setTimeout(myName.printName.bind(myName), 1000);
+        //kiran raj
+    </script>
+</body>
+
+</html>

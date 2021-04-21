@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Methods</title>
+</head>
+<body>
+    <script>
+        // Concat Method
+
+        let arr1 = [1,2,3,4,5];
+        let arr2 = [10, 12, 14];
+        let arr3 = [100, 101];
+        let arr4 = arr1.concat(arr2, arr3, 200, 300);
+        console.log(arr4);
+        //[1, 2, 3, 4, 5, 10, 12, 14, 100, 101, 200, 300]
+
+        let arrnest = [[1,2,3],5,7,6];
+        let mergArr = arrnest.concat([10,100,12], 100, 120);
+        console.log(mergArr); //[[1,2,3]], 5, 7, 6, 10, 100, 12, 100, 120]
+
+        let arr10 = [1, 2, 3,[100, 200]];
+        let arr11 = [5,10,15];
+        let arr12 = [100, 110, 120];
+        let newArr = arr10.concat(arr11, arr12); 
+        console.log(newArr);
+        //[1, 2, 3, [100, 200], 5, 10, 15, 100, 110, 120]
+
+        arr10.push(111);
+        console.log(newArr);
+        // [1, 2, 3, [100, 200], 5, 10, 15, 100, 110, 120] 
+
+        arr11.push(1111);
+        console.log(newArr);
+        // [1, 2, 3, [100, 200], 5, 10, 15, 100, 110, 120] 
+
+        // no change in newArr after the push operations on arr10  or arr11
+
+        arr10[3].push(300);
+        console.log(newArr);
+        // [1, 2, 3, [100, 200, 300], 5, 10, 15, 100, 110, 120]
+        // newArr get updated, nested elements are passed as references.
+
+        
+    </script>
+</body>
+</html>

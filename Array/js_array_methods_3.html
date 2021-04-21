@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Methods</title>
+</head>
+<body>
+    <script>
+        // indexOf
+        let arr1 = [1,2,3,4,5,6,7,8,9,0];
+        let result1 = arr1.indexOf(5);
+        console.log(result1);               // 4
+
+        let arr2 = ['a', 'aa', 'aaa', 'aa', 'a', 'bb', 'c'];
+        let result2 = arr2.indexOf('aa');
+        console.log(result2);               // 1
+
+        let result3 = arr2.indexOf('aa', 2);
+        console.log(result3);               // 3
+
+        let result4 = arr2.indexOf('z');
+        console.log(result4)                //-1
+
+        // Function to find all the occurance
+        function findAll(arr, elem){
+            let indexarr= [];
+            for (i=0; i<arr.length; i++) {
+                if (arr[i] === elem){
+                    indexarr.push(i)
+                }
+            }
+            return indexarr;
+        }
+
+        console.log(findAll(arr2, 'a')); [0, 4]
+
+
+        // lastIndexOf
+
+        let arr20 = [1,2,3,4,5,6,7,8,9,0];
+        let result10 = arr20.lastIndexOf(5);
+        console.log(result10);               // 4
+
+        let arr21 = ['a', 'aa', 'aaa', 'aa', 'a', 'bb', 'c'];
+        let result20 = arr21.lastIndexOf('aa');  // 3
+        console.log(result20); 
+        let result30 = arr21.lastIndexOf('a');   // 4
+        console.log(result30); 
+
+        // includes
+
+        let array1 = [10,20,30,15,25];
+        console.log(array1.includes(30));   // true
+        console.log(array1.includes(300));  // false
+
+
+    </script>
+</body>
+</html>

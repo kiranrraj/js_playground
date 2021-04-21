@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Array Shift</title>
+</head>
+
+<body>
+    <script>
+
+        arrNums = [1, 2, 3, 4, 5];
+        arrAlpha = ['a', 'b', 'c', 'd'];
+
+        let shift1 = arrNums.shift();
+        console.log(shift1);           //1 
+        console.log(arrNums);          // [2, 3, 4, 5]  
+
+        let shift2 = arrAlpha.shift();
+        console.log(shift2);           // a
+        console.log(arrAlpha);         // ["b", "c", "d"] 
+    </script>
+</body>
+
+</html>

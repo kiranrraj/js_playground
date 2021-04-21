@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Methods</title>
+</head>
+<body>
+    <script>
+        // Array reverse
+
+        let arr1 = [5,4,7,3,9];
+        let arr1Rev = arr1.reverse();
+        console .log(arr1Rev); //[9, 3, 7, 4, 5]
+        
+        // Sort method
+        let numArr = [11,22,13,67,51,33, 12];
+        let sortNumArr = numArr.sort();
+        console.log(sortNumArr);    //[11, 12, 13, 22, 33, 51, 67]
+
+        let numArrBogus = [22, 56, 34, 1000, 200, 300, 10 ,23,1];
+        let bogusArr = numArrBogus.sort();
+        console.log(bogusArr);     // [1, 10, 1000, 200, 22, 23, 300, 34, 56]
+
+        let namesArr = ["kiran", "manu", "vishnu", "adithyan"];
+        function sortLength(a,b){
+            a = a.length;
+            b = b.length;
+            return a - b
+        }
+
+        let sortedArr = namesArr.sort(sortLength);
+        console.log(sortedArr)
+        //["manu", "kiran", "vishnu", "adithyan"]
+
+        function sortVal(a,b){
+            a = parseInt(a)
+            b = parseInt(b)
+            return a - b
+        }
+        let sortedBogus = numArrBogus.sort(sortVal);
+        console.log(sortedBogus)
+        //[1, 10, 22, 23, 34, 56, 200, 300, 1000]
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    let arrNums = [1,2,3,4,5];
+    let arrAlpha = ['a','b','c','d'];
+
+    // Length of an array
+    let arrLen = [1,2,3,4,5];
+    arrLen[100] = 100;         
+
+    console.log(arrLen.length);     // 101
+    console.log(arrNums.length);    // 5
+    console.log(arrAlpha.length);   // 4
+
+    function arrLength(arr){
+        let count = 0;
+        arr.forEach(element =>{ 
+            if (element != undefined){
+                count++;
+            }
+        });
+        return count;
+    }
+
+    let count = arrLength(arrLen);
+    console.log(count);             // 6
+
+    arrNums.length = 3;
+    console.log(arrNums);           // [1, 2, 3]
+    console.log(arrNums[3]);        // undefined
+    </script>
+</body>
+</html>

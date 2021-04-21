@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Basics</title>
+</head>
+<body>
+    <script>
+    // Create an array
+    let arrNums = [1,2,3,4,5];
+    let arrAlpha = ['a','b','c','d'];
+
+    let arrString = new Array("the", "an", "a", "am");
+    let arrMixed = new Array("hello", 123, true, false);
+    let emptyArr = new Array();
+    let emptyArrLen = new Array(10);
+    console.log(emptyArrLen.length);        // 10
+
+    let arrFun = [function print1 () {console.log(1)},function print2 () {console.log(2)}, ]
+    
+    console.log(arrAlpha[0], arrMixed[0]);  // a hello
+    console.log(arrNums[4], arrMixed[3]);   // 5 false
+
+    // Add an element ot the array, change an element of array 
+    arrAlpha[4] = "added";
+    console.log(arrAlpha);
+
+    arrAlpha[4] = "changed";
+    console.log(arrAlpha);
+
+    arrAlpha[6] = "six";
+    console.log(arrAlpha);  // ["a", "b", "c", "d", "changed", empty, "six"]
+
+    console.log(arrAlpha[5])    // undefined
+
+
+    // Length of an array
+    let arrLen = [1,2,3,4,5];
+    arrLen[100] = 100;          
+    console.log(arrLen.length);     // 101
+    console.log(arrNums.length);
+    console.log(arrString.length);
+
+
+    // Multi dimensional array
+    let mArray = [['a', 'apple'], ['b', 'ball'], ['c', 'cat']];
+    console.log(mArray[0][0], mArray[2][1]); //a cat
+    mArray[3] = ['d','dog'];
+    console.log(mArray[3], mArray[3][0]); //["d", "dog"] "d"
+    mArray[3][1] = 'Doll';
+    console.log(mArray[3][1]); //Doll
+    console.log(mArray.length)   //4
+
+
+    // Push and pop methods
+    arrNums = [1,2,3,4,5];
+    arrAlpha = ['a','b','c','d'];
+
+    arrNums.push(6);
+    console.log(arrNums);            // [1, 2, 3, 4, 5, 6]
+
+    arrAlpha.push('z');
+    console.log(arrAlpha);          // ["a", "b", "c", "d", "z"]
+
+    arrNums.pop();
+    console.log(arrNums);           // [1, 2, 3, 4, 5]
+
+    arrAlpha.pop();
+    console.log(arrAlpha);          // ["a", "b", "c", "d"]
+
+
+    // Shift and unshift methods
+    arrNums = [1,2,3,4,5];
+    arrAlpha = ['a','b','c','d'];
+
+    arrNums.unshift(0);
+    console.log(arrNums);          // [0, 1, 2, 3, 4, 5]            
+
+    arrNums.shift();
+    console.log(arrNums);          // [1, 2, 3, 4, 5]
+    arrAlpha.unshift('aa');
+    console.log(arrAlpha);         // ["aa", "a", "b", "c", "d"]       
+
+    arrAlpha.shift();
+    console.log(arrAlpha);         // ["a", "b", "c", "d"]          
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Methods</title>
+</head>
+<body>
+    <script>
+        let arr1 = [1,2,3,4,5,10,20];
+        let r1 = arr1.splice(3);
+        console.log(r1);                // [4, 5, 10, 20]
+        console.log(arr1);              // [1, 2, 3]
+
+        let arr2 = [1,2,3,4,5,10,20,100,200];
+        let r2 = arr2.splice(0,3);
+        console.log(r2);                // [1, 2, 3]
+        console.log(arr2);              // [4, 5, 10, 20, 100, 200]
+
+        let arr3 = [11,33,43,100,98,10,20,55];
+        let r3 = arr3.splice(3);
+        console.log(r3);                // [100, 98, 10, 20, 55]
+        console.log(arr3);              // [11, 33, 43]
+
+        // insertion
+
+        let arr4 = [];
+        //insert element at index 0
+        arr4.splice(0,0,1,2,3,4);
+        console.log(arr4);              // [1, 2, 3, 4]
+
+        // insert element at index 4
+        arr4.splice(4,0,14,24,34,44);
+        console.log(arr4);              // [1, 2, 3, 4, 14, 24, 34, 44]
+
+        // insert element at index 10, as the length of the array
+        // is 8 the elements are added at the end of the array
+        arr4.splice(10,0,50,51,52,53);
+        console.log(arr4);
+        //[1, 2, 3, 4, 14, 24, 34, 44, 50, 51, 52, 53]
+        console.log(arr4.length); // 12
+
+        // insert element at index 0
+        arr4.splice(0,0,100,200);
+        console.log(arr4);
+        //[100, 200, 1, 2, 3, 4, 14, 24, 34, 44, 50, 51, 52, 53]
+
+
+        // replace elements
+
+        let myArr = [1,2,3,4,5];
+        let res1 = myArr.splice(3,2,40,50);
+        console.log(myArr);     //[1, 2, 3, 40, 50]
+        console.log(res1);      //[4,5]
+
+
+        //Slice
+
+        let newArr = [1,2,3,4,5];
+        let subArr = newArr.slice(2);
+        console.log(subArr); // [3, 4, 5]
+        console.log(newArr); // [1, 2, 3, 4, 5]
+
+        let subArr1 = newArr.slice();
+        console.log(subArr1); // [1, 2, 3, 4, 5]
+        // slice all elements
+
+        let subArr2 = newArr.slice(0);
+        console.log(subArr2); // [1, 2, 3, 4, 5]
+        // slice elements from index 0 to array end
+
+        let subArr3 = newArr.slice(1,3);
+        console.log(subArr3); // [2, 3]
+        // slice elements from index 1 to index 2
+
+        let subArr4 = newArr.slice(1,-1);
+        console.log(subArr4); // [2, 3, 4]
+        // slice elements from index 1 to index length-2
+
+    </script>
+</body>
+</html>

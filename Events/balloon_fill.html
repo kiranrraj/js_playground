@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon fill</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1,
+        p {
+            text-align: center;
+        }
+
+        .balloon {
+            margin-top: 300px;
+            position: fixed;
+            left: 50%;
+            bottom: 20%;
+            transform: translateX(-50%);
+            transition: fontSize 200ms ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Balloon fill</h1>
+        <p>Use up and down arrows</p>
+        <div class="balloon">🎈</div>
+    </div>
+
+    <script>
+        let flag = "";
+        let balloon = document.querySelector('.balloon');
+        document.addEventListener('keydown', e => {
+            fill(e);
+        });
+
+        function fill(event) {
+            if (event.key == "ArrowUp") {
+                let fs = window.getComputedStyle(balloon).fontSize;
+                fs = parseInt(fs.replace('px', "")) + 4;
+                if (fs > 250) {
+                    balloon.textContent = '💥';
+                    setTimeout(() => {
+                        balloon.textContent = '🎈';
+                        balloon.style.fontSize = '16px';
+                    }, 100)
+                } else {
+                    balloon.style.fontSize = `${fs}px`;
+                }
+
+            } else if (event.key == "ArrowDown") {
+                let fs = window.getComputedStyle(balloon).fontSize;
+                fs = parseInt(fs.replace('px', "")) - 4;
+                if (fs > 16) {
+                    balloon.style.fontSize = `${fs}px`;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

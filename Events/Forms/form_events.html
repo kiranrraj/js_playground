@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Events</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .form1{
+            padding: 10px;
+        }
+        .input_ctn{
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" class="form1">
+        <div class="input_ctn">
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" id="fname" class="fname">
+        </div>
+        <div class="input_ctn">
+            <label for="fname">Last Name</label>
+            <input type="text" name="lname" id="lname" class="lname">
+        </div>
+        <div class="input_ctn">
+            <select name="nationality" id="" class="nationality">
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Germany">Germany</option>
+            </select>
+        </div>
+        <div class="input_ctn">
+            <input type="button" value="Submit" class="btn">
+        </div>
+    </form>
+
+    <script>
+        let btn = document.querySelector('.btn');
+        let fname = document.querySelector('#fname');
+        let lname = document.querySelector('#lname');
+        function getValue(){
+            let form1 = document.querySelector('.form1');
+            let fname = form1.fname;
+            let select = form1.nationality;
+            console.log(form1);
+            console.log(fname);
+            console.log(select);
+            console.log(fname.form);
+
+            let options = select.options;
+            Array.from(options).forEach(element => {
+                console.log(element.value);
+            });
+
+            console.log(select.options);
+            console.log(select.value);
+            console.log(select.selectedIndex);
+        }
+
+        function focusInput(e){
+            e.target.style.borderBottom = '5px solid green';
+        }
+
+        function blurInput(e){
+            e.target.style.border = "2px solid green";
+        }
+
+        btn.addEventListener('click', getValue);
+        fname.addEventListener('focus',focusInput);
+        lname.addEventListener('focus',focusInput);
+        fname.addEventListener('blur',blurInput);
+        lname.addEventListener('blur',blurInput);
+
+
+
+    </script>
+</body>
+</html>

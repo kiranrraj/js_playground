@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS: Events</title>
+    <style>
+        .container {
+            width: 100vw;
+            height: 200vh;
+        }
+
+        #progress {
+            border-bottom: 10px solid blue;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .drag {
+            background: orange;
+            width: 60px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="blk1">
+            <p class="one">A paragraph with a <button class="btn1">button</button>.</p>
+        </div>
+
+        <div class="btnBlk">
+            <button>A</button>
+            <button>B</button>
+            <button>C</button>
+        </div>
+
+        <p>Drag the bar to change its width:</p>
+        <div class="drag"></div>
+
+        <div id="progress"></div>
+
+
+        <p>Name: <input type="text" data-help="Your full name"></p>
+        <p>Age: <input type="text" data-help="Your age in years"></p>
+        <p id="help"></p>
+
+    </div>
+
+    <script>
+        // --------------------------------------
+        let para = document.querySelector(".one");
+        let button = document.querySelector(".btn1");
+        para.addEventListener("mousedown", () => {
+            console.log("Handler for paragraph.");
+        });
+        button.addEventListener("mousedown", event => {
+            console.log("Handler for button.");
+            if (event.button == 2) event.stopPropagation();
+        });
+        // --------------------------------------------
+
+
+        // --------------------------------------------
+        let btnBlk = document.querySelector(".btnBlk");
+        btnBlk.addEventListener("click", event => {
+            if (event.target.nodeName == "BUTTON") {
+                console.log("Clicked", event.target.textContent);
+            }
+        });
+        // ------------------------------------------------
+
+
+        // -------------------------------------------------
+        window.addEventListener("keydown", event => {
+            if (event.key == " " && event.ctrlKey) {
+                console.log("Continuing!");
+            }
+        });
+        // -------------------------------------------------
+
+
+        // -------------------------------------------------
+        let lastX; // Tracks the last observed mouse X position
+        let bar = document.querySelector(".drag");
+        bar.addEventListener("mousedown", event => {
+            if (event.button == 0) {
+                lastX = event.clientX;
+                window.addEventListener("mousemove", moved);
+                event.preventDefault(); // Prevent selection
+            }
+        });
+
+        function moved(event) {
+            if (event.buttons == 0) {
+                window.removeEventListener("mousemove", moved);
+            } else {
+                let dist = event.clientX - lastX;
+                let newWidth = Math.max(10, bar.offsetWidth + dist);
+                bar.style.width = newWidth + "px";
+                lastX = event.clientX;
+            }
+        }
+        // -------------------------------------------------
+
+        // -------------------------------------------------
+
+        let progress = document.querySelector("#progress");
+        window.addEventListener("scroll", () => {
+            let max = document.body.scrollHeight - innerHeight;
+            progress.style.width = `${(pageYOffset / max) * 100}%`;
+        });
+        // -------------------------------------------------
+
+
+        // -------------------------------------------------
+
+        let help = document.querySelector("#help");
+        let fields = document.querySelectorAll("input");
+        for (let field of Array.from(fields)) {
+            field.addEventListener("focus", event => {
+                let text = event.target.getAttribute("data-help");
+                help.textContent = text;
+            });
+            field.addEventListener("blur", event => {
+                help.textContent = "";
+            });
+        }
+
+        // -------------------------------------------------
+
+    </script>
+</body>
+
+</html>

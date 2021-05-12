@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoll Events</title>
+    <link rel="stylesheet" href="./scroll_events.css">
+    <style>
+        *{
+            width: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 100vw;
+            height: 150vh;
+            border: 50px solid salmon;
+            padding: 50px;
+        }
+
+        .box_ctn{
+            width: 400px;
+            height: 400px;
+            background-color: gold;
+            margin: 10px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .box{
+            width: 100px;
+            height: 50px;
+            background-color: teal;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .top{
+            position: absolute;
+            top: 200px;
+            right: 50px;
+        }
+
+        .middleBox{
+            position: relative;
+            top: 20%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 300px;
+            background-color: steelblue;
+        }
+
+        .middle{
+            position: absolute;
+            top: 20px;
+        }
+
+        .bottom{
+            position: absolute;
+            bottom: -300px;
+            right: 50px;
+        }
+
+        .btn, 
+        .btn1,
+        .btn2,
+        .btn4,
+        .btn5{
+            width: 60px;
+            height: 30px;
+        }
+
+        .btn3{
+            position: absolute;
+            bottom: -420px;
+            left: 100px;
+            width: 60px;
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box top">To Bottom</div>
+        <button class="btn" value="button">Click</button>
+        <button class="btn1" value="button">Click</button>
+        <button class="btn2">Bottom</button>
+        <button class="btn3">Top</button>
+        <div class="middleBox">
+            <div class="box middle">middle</div>
+            <button class="btn4">left</button>
+            <button class="btn5">Right</button>
+        </div>
+        <div class="box bottom">To top</div>
+    </div>
+    <script>
+        let topbx = document.querySelector('.top');
+        let bottombx = document.querySelector('.bottom');
+        let middlebx = document.querySelector('.middle');
+        let container = document.querySelector('.container');
+        let btn = document.querySelector('.btn');
+        let btn1 = document.querySelector('.btn1');
+        let btn2 = document.querySelector('.btn2');
+        let btn3 = document.querySelector('.btn3');
+        let btn4 = document.querySelector('.btn4');
+        let btn5 = document.querySelector('.btn5');
+
+        window.addEventListener('scroll', (event)=>{
+            console.log('scrolling...');
+            console.log(`scrollX : ${scrollX} - scrollY: ${scrollY}` );
+            console.log(`PageXOffset : ${pageXOffset} - PageYOffset: ${pageYOffset}` );
+        })
+
+        btn.addEventListener("click", (event) =>{
+            console.log(event.target.className);
+            console.log(event.type);
+            console.log(event.target.value);
+        });
+
+        btn1.addEventListener("click", (event) =>{
+            display(event);
+        });
+
+        function display(e){
+            console.log(e.target.className);
+            console.log(e.type);
+            console.log(e.target.value);
+            console.log(e.target)
+        }
+
+        btn2.addEventListener("click", (event) =>{
+            scrollBy(0, 1400);
+        });
+
+        btn3.addEventListener("click", (event) =>{
+            scrollTo(0, 0);
+        });
+
+        bottombx.addEventListener('click', ()=>{
+            topbx.scrollIntoView(false);
+        });
+
+        topbx.addEventListener('click', ()=>{
+            bottombx.scrollIntoView(true);
+        })
+
+        btn4.addEventListener('click', ()=>{
+            console.log(middlebx.clientLeft, middlebx.offsetLeft)
+            middlebx.clientLeft-=40;
+            console.log(middlebx.clientLeft, middlebx.offsetLeft)
+        })
+
+
+
+    </script>
+</body>
+</html>

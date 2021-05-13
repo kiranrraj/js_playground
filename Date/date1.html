@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dates</title>
+</head>
+<body>
+    <script>
+        let now = new Date();
+        console.log(now);                
+        // Thu May 13 2021 21:49:44 GMT+0530 (India Standard Time)
+
+        console.log(now.getFullYear());         // 2021
+        console.log(now.getMonth());            // 4
+        console.log(now.getDate());             // 13
+        console.log(now.getHours());            // 21
+        console.log(now.getMinutes());          // 49
+        console.log(now.getSeconds());          // 44
+        console.log(now.getMilliseconds());     // 251
+        console.log(now.getDay());              // 4
+        console.log(now.getTimezoneOffset());   // -330
+        console.log(now.toString());
+        // Thu May 13 2021 21:49:44 GMT+0530 (India Standard Time)
+
+        console.log(now.toLocaleString());
+        // 5/13/2021, 9:49:44 PM
+
+        console.log(now.toDateString());
+        // Thu May 13 2021
+
+        console.log(now.toLocaleDateString());
+        // 5/13/2021
+
+        console.log(now.toTimeString());
+        // 21:49:44 GMT+0530 (India Standard Time)
+
+        console.log(now.toLocaleTimeString());
+        // 9:49:44 PM
+
+        let myBday = new Date(2021, 6, 24);
+        console.log(myBday);
+        // Sat Jul 24 2021 00:00:00 GMT+0530 (India Standard Time)
+
+        let nextDay = new Date();
+        nextDay.setDate(nextDay.getDate() + 1);
+        console.log(nextDay); 
+        // Fri May 14 2021 21:49:44 GMT+0530 (India Standard Time)
+
+        console.log(Date.now());
+        // 1620921345131  -- time stamp
+    </script>
+</body>
+</html>

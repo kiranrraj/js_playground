@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dates</title>
+</head>
+<body>
+    <script>
+        let now = new Date();
+        //Current Time:  Fri May 14 2021 21:28:29 GMT+0530 (India Standard Time)
+
+
+        //Current Time:  Fri May 14 2021 21:28:29 GMT+0530 (India Standard Time)
+        now.setDate(20)
+        // Thu May 20 2021 21:28:29 GMT+0530 (India Standard Time)
+        console.log(now);
+
+
+        //Current Time:  Fri May 14 2021 21:28:29 GMT+0530 (India Standard Time)       
+        now = new Date();
+        now.setMonth(11);
+        console.log(now);
+        // Tue Dec 14 2021 21:29:51 GMT+0530 (India Standard Time)
+
+
+        //Current Time:  Fri May 14 2021 21:28:29 GMT+0530 (India Standard Time)
+        now = new Date();
+        now.setFullYear(2025);
+        console.log(now);
+        // Wed May 14 2025 21:30:20 GMT+0530 (India Standard Time)
+        
+
+        //Current Time:  Fri May 14 2021 21:28:29 GMT+0530 (India Standard Time)
+        now = new Date();
+        now.setHours(23);
+        console.log(now);
+        // Fri May 14 2021 23:31:59 GMT+0530 (India Standard Time)
+
+
+        //Current Time:  Fri May 14 2021 21:28:29 GMT+0530 (India Standard Time)
+        now = new Date();
+        now.setMinutes(00);
+        console.log(now);
+        // Fri May 14 2021 21:00:58 GMT+0530 (India Standard Time)
+
+        // Current Time:  Fri May 14 2021 21:28:29 GMT+0530 (India Standard Time)
+        now = new Date();
+        now.setSeconds(00);
+        console.log(now);
+        // Fri May 14 2021 21:33:00 GMT+0530 (India Standard Time)
+
+        // Current Time:  Fri May 14 2021 21:28:29 GMT+0530 (India Standard Time)
+        now = new Date();
+        now.setMilliseconds(00);
+        console.log(now);
+        // Fri May 14 2021 21:34:32 GMT+0530 (India Standard Time)
+
+    </script>
+</body>
+</html>

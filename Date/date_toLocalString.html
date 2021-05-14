@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dates</title>
+</head>
+
+<body>
+    <script>
+
+        // ToLocaleDateString
+        // weekday - "narrow", "short", "long"
+        // year - "numeric", "2-digit"
+        // month - "numeric", "2-digit", "narrow", "short", "long"
+        // day - "numeric", "2-digit"
+
+        const date = new Date();
+        console.log(date.toLocaleDateString('en-US'));
+        // 5/14/2021
+
+        const dateOptions = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        };
+
+        console.log(date.toLocaleDateString('en-US', dateOptions)); 
+        // Friday, May 14, 2021
+        console.log(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', weekday: 'short' }),);
+        // Fri, May 14
+
+
+
+        // toLocaleTimeString()
+        // timeZone - 
+        // hour12 - true, false
+        // hour - "numeric", "2-digit"
+        // minute - "numeric", "2-digit"
+        // second - "numeric", "2-digit"
+
+        const newdate = new Date();
+        console.log(newdate.toLocaleTimeString('en-US')); 
+        // 10:46:28 PM
+
+        const timeOptions = {
+            hour12: false,
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: 'Asia/Kolkata'
+        };
+
+        console.log(newdate.toLocaleTimeString('en-US', timeOptions));
+        // 22:46:28
+
+    </script>
+</body>
+
+</html>

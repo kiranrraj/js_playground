@@ -9,20 +9,25 @@
 <body>
     <script>
         let now = new Date();
-        console.log(now);                
-        // Thu May 13 2021 21:49:44 GMT+0530 (India Standard Time)
+        console.log(now);                 
+         // Fri May 14 2021 20:29:55 GMT+0530 (India Standard Time)      
+        console.log(typeof now);                // object  
+        console.log(typeof now.toString())      // string
+       
 
         console.log(now.getFullYear());         // 2021
         console.log(now.getMonth());            // 4
-        console.log(now.getDate());             // 13
-        console.log(now.getHours());            // 21
-        console.log(now.getMinutes());          // 49
+        console.log(now.getDate());             // 14
+        console.log(now.getHours());            // 20
+        console.log(now.getMinutes());          // 29
         console.log(now.getSeconds());          // 44
         console.log(now.getMilliseconds());     // 251
-        console.log(now.getDay());              // 4
+        console.log(now.getDay());              // 5
         console.log(now.getTimezoneOffset());   // -330
+
+        
         console.log(now.toString());
-        // Thu May 13 2021 21:49:44 GMT+0530 (India Standard Time)
+        // Fri May 14 2021 20:29:55 GMT+0530 (India Standard Time)
 
         console.log(now.toLocaleString());
         // 5/13/2021, 9:49:44 PM

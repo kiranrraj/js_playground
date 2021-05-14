@@ -8,23 +8,34 @@
 </head>
 <body>
     <script>
+
+        // Find Yesterday
         function getYesterday(){
             let today = new Date();
             let yesterday = new Date();
             yesterday.setDate(yesterday.getDate() - 1);
             console.log(`Today: ${today} Yesterday: ${yesterday}`);
+
+            const yesterday1 = (today1 => new Date(today1.setDate(today1.getDate() - 1)))(new Date);
+            console.log(yesterday1);
         }
         getYesterday();
 
 
+        // Find Tomorrow
         function getTomorrow(){
             let today = new Date();
             let tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             console.log(`Today: ${today} Tomorrow: ${tomorrow}`);
+
+            const tomm1 = (today1 => new Date(today1.setDate(today1.getDate() + 1)))(new Date);
+            console.log(tomm1);
         }
         getTomorrow();
 
+
+        // Print Day
         function printWeekday(){
             let names = ['Sunday', 'Monday', 
             'Tuesday', 'Wednesday', 'Thursday', 
@@ -33,6 +44,30 @@
         }
         printWeekday();
 
+
+        // Print Month
+        function printMonthName(){
+            let names = ['January', 'February', 'March', 'April', 'May', 'June', 
+            'July', 'August', 'September', 'October',' November', 'December'];
+            console.log(`The month is ${names[new Date().getMonth()]}`);
+        }
+        printMonthName();
+
+
+        // Get first and last day of month
+        function firstLastDay(year,month){
+            let dateFirst = new Date(year,month-1,1);
+            let dateLast = new Date(year,month,0);
+            console.log(dateFirst, dateLast);
+            console.log(dateFirst.toDateString().split(" ")[0]);
+        }
+        firstLastDay(2021, 1);
+        firstLastDay(2021, 2);
+        firstLastDay(2021, 5);
+        
+        
+        // Print Number of days in a month             
+        // Month starts from 0, so (year,month, 0) gives last day of month-1
         function getDaysInMonth(year,month){
             let days = new Date(year, month,0).getDate();
             console.log(days);
@@ -42,6 +77,59 @@
         getDaysInMonth(2021, 5);
 
         console.log(new Date(2021, 1,0));
+
+
+        // Find AM or PM time in hh:mm:ss format
+        function amOrpm(t){
+            let time = t.split(" ")[0].split(':');
+
+            if(parseInt(time[0]) >= 12){
+                parseInt(time[0]) === 12 ? 12 : parseInt(time[0] % 12);
+                time.push("PM")
+            }else{
+                time.push("AM")
+            }
+            console.log(`${time[0]}:${time[1]}:${time[2]} ${time[3]}`);
+        }
+
+        amOrpm(new Date().toTimeString());
+        amOrpm(new Date(2001, 10, 10, 4,44,20).toTimeString());
+        amOrpm(new Date(2001, 10, 10, 12,00,00).toTimeString());
+
+        // Time with AM / PM
+        console.log(new Date().toLocaleTimeString());
+
+
+        // Calculate number of days between two days
+        function noDates(first, last){
+            let difference = Math.ceil((last - first) / (1000*60*60*24));
+            console.log(Math.abs(difference));
+        }
+
+        noDates(new Date('2018-1-1'), new Date('2021-05-15'))
+
+        
+        // Calculate number of months between two dates
+        function numMonths(first, last){
+            let yearToMonths = [last.getFullYear() - first.getFullYear()] * 12;
+            let months  = [yearToMonths + (last.getMonth() + 1)] - (first.getMonth() + 1); 
+            console.log(months);
+        }
+
+        numMonths(new Date('2018-05-21'), new Date('2021-05-21'));
+
+        let startTime = Date.now();
+        let endTime;
+        let elapsedTime;
+        setTimeout(()=>{
+            endTime = Date.now();
+            elapsedTime = (endTime - startTime) / 1000;
+            console.log(elapsedTime); // 1.208
+        },1200);
+
+
+
+
     </script>
 </body>
 </html>

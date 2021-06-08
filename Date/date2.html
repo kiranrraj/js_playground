@@ -9,12 +9,23 @@
 <body>
     <script>
 
+        let time1 = new Date(0);
+        console.log(time1);
+        // Thu Jan 01 1970 05:30:00 GMT+0530 (India Standard Time)
+        console.log(time1.toLocaleString());
+        console.log(time1.toISOString());
+
+        let msec = Date.now();
+        console.log(new Date(msec), msec);
+
         // Find Yesterday
         function getYesterday(){
             let today = new Date();
             let yesterday = new Date();
+            let x = yesterday.getDate() - 1;
+            console.log(x, typeof x);
             yesterday.setDate(yesterday.getDate() - 1);
-            console.log(`Today: ${today} Yesterday: ${yesterday}`);
+            console.log(`Today: ${today.toDateString()} Yesterday: ${yesterday.toDateString()}`);
 
             const yesterday1 = (today1 => new Date(today1.setDate(today1.getDate() - 1)))(new Date);
             console.log(yesterday1);
@@ -27,7 +38,7 @@
             let today = new Date();
             let tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
-            console.log(`Today: ${today} Tomorrow: ${tomorrow}`);
+            console.log(`Today: ${today.toDateString()} Tomorrow: ${tomorrow.toDateString()}`);
 
             const tomm1 = (today1 => new Date(today1.setDate(today1.getDate() + 1)))(new Date);
             console.log(tomm1);
@@ -53,13 +64,16 @@
         }
         printMonthName();
 
+        let dateToString = new Date().toTimeString();
+        let dateTolocal = new Date().toLocaleTimeString();
+        console.log(dateToString, dateTolocal);   
+        // 15:36:09 GMT+0530 (India Standard Time) 3:36:09 PM
 
         // Get first and last day of month
         function firstLastDay(year,month){
-            let dateFirst = new Date(year,month-1,1);
+            let dateFirst = new Date(year,month-1);
             let dateLast = new Date(year,month,0);
-            console.log(dateFirst, dateLast);
-            console.log(dateFirst.toDateString().split(" ")[0]);
+            console.log(dateFirst.toLocaleDateString(), dateLast.toLocaleDateString());
         }
         firstLastDay(2021, 1);
         firstLastDay(2021, 2);
@@ -70,7 +84,7 @@
         // Month starts from 0, so (year,month, 0) gives last day of month-1
         function getDaysInMonth(year,month){
             let days = new Date(year, month,0).getDate();
-            console.log(days);
+            console.log(`Number of days in ${month}/${year}: ${days}`);
         }
         getDaysInMonth(2021, 1);
         getDaysInMonth(2021, 2);
@@ -103,20 +117,21 @@
         // Calculate number of days between two days
         function noDates(first, last){
             let difference = Math.ceil((last - first) / (1000*60*60*24));
-            console.log(Math.abs(difference));
+            console.log(`The number of days between ${first.toLocaleDateString()} and ${last.toLocaleDateString()} is ${Math.abs(difference)} days`);
         }
 
         noDates(new Date('2018-1-1'), new Date('2021-05-15'))
+        console.log(new Date('2018-1-1') - new Date('2021-05-15') )
 
         
         // Calculate number of months between two dates
         function numMonths(first, last){
             let yearToMonths = [last.getFullYear() - first.getFullYear()] * 12;
             let months  = [yearToMonths + (last.getMonth() + 1)] - (first.getMonth() + 1); 
-            console.log(months);
+            console.log(`Number of months between ${first.toLocaleDateString()} and ${last.toLocaleDateString()} is ${months}`);
         }
 
-        numMonths(new Date('2018-05-21'), new Date('2021-05-21'));
+        numMonths(new Date('2018-05-31'), new Date('2021-05-21'));
 
         let startTime = Date.now();
         let endTime;

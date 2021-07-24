@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects: Constructor Return</title>
+</head>
+<body>
+    <script>
+        function Car(company, model, year, fuel){
+            this.company = company;
+            this.model = model;
+            this.year = year;
+            this.fuel = fuel;
+            this.printDet = function(){
+                console.log(`${this.company} - ${this.model} - ${this.year} - ${this.fuel}`);
+            }
+        };
+
+        let myCar = new Car('Tesla', 'Model S', 2021, 'electric' );
+        console.log(myCar)
+        //Car {company: "Tesla", model: "Model S", year: 2021, fuel: "electric", printDet: ƒ}
+        myCar.printDet();
+        //Tesla - Model S - 2021 - electric
+        console.log(myCar.company);     // Tesla
+
+
+
+        function Car1(company, model, year, fuel){
+            return {
+                company, model, year, fuel
+            }
+        };
+
+        let myCar1 = new Car1('Tesla', 'Model S', 2021, 'electric');
+        console.log(myCar1)
+        //{company: "Tesla", model: "Model S", year: 2021, fuel: "electric"}
+        console.log(myCar1.company);    // Tesla
+
+
+
+
+        function Car2(){
+            return {company: "Tesla", model: "Model S", year: 2021, fuel: "electric"}
+        };
+
+        let myCar2 = new Car2();
+        console.log(myCar2);
+        //{company: "Tesla", model: "Model S", year: 2021, fuel: "electric"}
+        console.log(myCar2.company);    // Tesla
+
+
+        
+        // Return should be an object, else constructor will return "this"
+        // In the following example return statement is ignored
+
+        function Car4(company, model, year, fuel){
+            this.company = company;
+            this.model = model;
+            this.year = year;
+            this.fuel = fuel;
+            this.printDet = function(){
+                console.log(`${this.company} - ${this.model} - ${this.year} - ${this.fuel}`);
+            }
+
+            return "Hello this is your car speaking"
+        };
+
+        let myCar4 = new Car4('Tesla', 'Model S', 2021, 'electric' );
+        console.log(myCar4)
+        //Car {company: "Tesla", model: "Model S", year: 2021, fuel: "electric", printDet: ƒ}
+        myCar4.printDet();
+        //Tesla - Model S - 2021 - electric
+        console.log(myCar4.company);     // Tesla
+
+
+
+        // Lets look at another example
+        // Here the values of "this" is ignored, object metioned in the return
+        // statement is returned
+        function Car5(company, model, year, fuel){
+            this.company = company;
+            this.model = model;
+            this.year = year;
+            this.fuel = fuel;
+            this.printDet = function(){
+                console.log(`${this.company} - ${this.model} - ${this.year} - ${this.fuel}`);
+            }
+
+            return {msg: "Hello this is your car speaking"}
+        };
+
+        let myCar5 = new Car5('Tesla', 'Model S', 2021, 'electric' );
+        console.log(myCar5)
+        //{msg: "Hello this is your car speaking"}
+        console.log(myCar5.company);     // undefined
+        console.log(myCar5.msg);         // Hello this is your car speaking
+    </script>
+</body>
+</html>

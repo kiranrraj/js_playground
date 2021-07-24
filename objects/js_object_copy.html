@@ -31,6 +31,7 @@
         
         let kiran2 = {};
         for (key in kiran){
+            console.log(key);           // fname  lname  email  admin
             kiran2[key] = kiran[key];
         }
         // Here we does not pass the reference to kiran2 we created a new object
@@ -43,6 +44,12 @@
         console.log(kiran === kiran2);      //false
 
 
+
+        // ---------------------------------------------------------------
+        // Use Object.assign() to create a copy of an object or create a new object
+        // by copying multiple objects.
+        // Object.assign(target, source1, source2, . . . ., sourceN);
+
         let kiran3 = {};
         Object.assign(kiran3, kiran);
         // Object.assign copies the source object properties to the target object.
@@ -51,6 +58,58 @@
         //{fname: "kiran", lname: "raj", email: "kiranr@gmail.com", admin: true} 
         //{fname: "kiran", lname: "raj", email: "kiranr@gmail.com", admin: true} 
         console.log(kiran === kiran3);      //false
+        // ---------------------------------------------------------------
+
+
+
+        // ---------------------------------------------------------------
+
+        let user_1 = {
+            fname: "kiran",
+            lname: "raj"
+        }
+
+        let user_2 = {
+            fname: "Rahul"
+        }
+
+        Object.assign(user_1, user_2)
+        console.log(user_1);            //{fname: "Rahul", lname: "raj"}
+
+        // You can see that when we use the assign(), existing properties in target that are
+        // also in source object are owerwritten all other properties of target is ignored.
+        // ---------------------------------------------------------------
+
+
+
+        // ---------------------------------------------------------------
+        // Copy multiple objects into one
+
+        let user_11 = {fname: "kiran"};
+        let user_12 = {lname: "raj"};
+        let user_13 = {nationality: "Indian"};
+        let user_new = Object.assign({}, user_11, user_12, user_13);
+        console.log(user_new);      
+        //{fname: "kiran", lname: "raj", nationality: "Indian"}
+        // ---------------------------------------------------------------
+
+
+
+        // ---------------------------------------------------------------
+
+        let name1 = {fname: "kiran", lname: "raj", age: 33};
+        let name2 = Object.assign({}, name1);
+        console.log(name2);
+        //{fname: "kiran", lname: "raj", age: 33}
+
+        Object.defineProperty(name1, "age", {enumerable:false});
+        let name3 = Object.assign({}, name1);
+        console.log(name3);
+        //{fname: "kiran", lname: "raj"
+
+
+        // ---------------------------------------------------------------
+
 
 
         let user = {
@@ -73,11 +132,9 @@
             lname: "raj"
         };
 
-        // name = "something";  this will create error as name is a constant.
+        //name = "something";         //this will create error as name is a constant.
         name.fname = "something";
         console.log(name);  //{fname: "something", lname: "raj"}
-        // value of name property changed no error, value of name is constant
-        // but the value of property can be changed even if name is declared const
 
     </script>
 </body>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Constructor</title>
+</head>
+<body>
+    <script>
+        function Hero(name){
+            this.name = name;
+        }
+
+        //Declaring a constructor function and calling it without new returns "undefined":
+        // this keyword inside the Hero function creates a global variable with name "name"
+        let me = Hero('kiran');
+        console.log(typeof me);          // undefined
+        console.log(me);                 // undefined
+        console.log(this.name);          // kiran
+        console.log(window.name);        // kiran
+
+        let newMe = new Hero('kiran');
+        console.log(typeof newMe);       // object
+        console.log(newMe);              // Hero {name: "kiran"}
+        console.log(newMe.constructor)   // Hero(name){
+                                         //     this.name = name;
+                                         // }
+
+        // If an object was created using the object literal notation, its constructor is the built-in
+        // Object() constructor function
+        let myName = {
+            fname: "kiran",
+            lname: "raj"
+        }
+
+        console.log(myName.constructor);    //ƒ Object() { [native code] }
+
+        function newName(fname, lname){
+            this.fname = fname;
+            this.lname = lname
+        }
+
+        let myName_c = new newName("kiran", "raj");
+        console.log(newName.constructor);           //ƒ Function() { [native code] }
+        console.log(myName_c.constructor);          // ƒ newName(fname, lname){
+                                                    //     this.fname = fname;
+                                                    //     this.lname = lname
+                                                    // }
+
+                                                    
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Object Prototype</title>
+</head>
+<body>
+    <script>
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+            this.sayIt = function () {
+                return `I am ${name} and i am ${age} year's old.`
+            }
+        }
+
+        const degree = {
+            bachelor: "BSc",
+            masters: "MBA"
+        }
+
+        Person.prototype = degree;
+
+        let me = new Person('kiran', 33);
+
+        console.log(me.name);                   // kiran
+        console.log(me.age);                    // 33
+        console.log(me.sayIt());                // I am kiran and i am 33 year's old.
+        console.log(me.bachelor);               // BSc
+        console.log(Person.prototype);          // {bachelor: "BSc", masters: "MBA"}
+        console.log(me.prototype);              // undefined
+        console.log(me.constructor);            // ƒ Object() { [native code] }
+        console.log(me.constructor.prototype);  
+        // {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, 
+        //  hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+        
+        console.log(me.__proto__);              // { bachelor: "BSc", masters: "MBA" }
+        console.log(me.__proto__ === degree);   // true
+
+    </script>
+</body>
+</html>

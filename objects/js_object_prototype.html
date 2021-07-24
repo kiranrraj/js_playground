@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Objects Prototype</title>
+</head>
+<body>
+    <script>
+        var mohanlal = {
+            name: "Mohan Lal",
+            actor: true,
+            sayit(){
+                console.log(`I am ${this.name}, i am an actor. `)
+            }
+        }
+
+        function EmptyFunction(){};
+        EmptyFunction.prototype = mohanlal;
+
+        let newFunction = new EmptyFunction();
+        console.log(newFunction.prototype);             // undefined
+        console.log(typeof EmptyFunction.prototype)     // object
+
+        console.log(newFunction.name);                  // Mohan Lal
+        console.log(newFunction.actor);                 // true
+        newFunction.sayit();                            // I am Mohan Lal, i am an actor.
+    </script>
+</body>
+</html>

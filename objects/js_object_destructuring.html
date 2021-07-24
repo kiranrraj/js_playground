@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript: Object Destructuring</title>
+</head>
+<body>
+    <script>
+        let me = {
+            fname: "kiran",
+            lname: "raj",
+            nationality: "Indian",
+            healthy: true
+        }
+
+        // Local Variables fname and lname got the value from "me" object because the object
+        // contains property with name ,fname and lname
+        let {fname, lname} = me;
+        console.log(fname, lname);      // kiran raj
+
+
+        let {fname: first_name} = me;
+        console.log(first_name)         // kiran
+    </script>
+</body>
+</html>

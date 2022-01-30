@@ -13,6 +13,10 @@ const functions = {
     
     isUndefined: () => {
         return undefined;
+    },
+
+    isNull: () => {
+        return null;
     }
 }
 

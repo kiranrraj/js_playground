@@ -7,12 +7,23 @@
     "test": "jest --verbose"
   },
   "jest": {
-    "collectCoverage":true
+    "collectCoverage": true,
+    "reporters": [
+      "default",
+      [
+        "./node_modules/jest-html-reporter",
+        {
+          "pageTitle": "Test Report"
+        }
+      ]
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^27.4.7"
+    "axios": "^0.25.0",
+    "jest": "^27.4.7",
+    "jest-html-reporter": "^3.4.2"
   }
 }

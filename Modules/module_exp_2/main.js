@@ -1,3 +1,3 @@
-import {name, Greet} from "./greet.js";
+import { Greet } from "./greet.js";
 
 Greet();
